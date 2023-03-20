@@ -5,6 +5,8 @@ import BudgetView from '../views/BudgetView.vue';
 import ExchangeView from '../views/ExchangeView.vue';
 import NewsView from '../views/NewsView.vue';
 import ProfilView from '../views/ProfilView.vue';
+import LoginView from '../views/LoginView.vue';
+import RegisterView from '../views/RegisterView.vue';
 
 
 const router = createRouter({
@@ -39,6 +41,16 @@ const router = createRouter({
       path: '/profil',
       name: 'profil',
       component: ProfilView
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterView
     },
   ]
 })

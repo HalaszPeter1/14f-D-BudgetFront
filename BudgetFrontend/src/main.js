@@ -8,6 +8,7 @@ import 'bootstrap/dist/js/bootstrap'
 
 import './assets/main.css'
 
+
 import './assets/script.js'
 
 const app = createApp(App)
