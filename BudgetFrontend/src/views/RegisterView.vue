@@ -27,10 +27,11 @@
 </template>
 
 <style>
+
 .container {
-    width: 400px !important;
+    width: 400px !important ;
     max-width: 95%;
-    margin-top: 25px;
+    margin-top: 25px; 
     padding-top: 10px;
     padding-bottom: 20px;
 }
@@ -88,7 +89,6 @@
     color: #0d6efd;
     cursor: pointer
 }
-
 </style>
   
 <script>

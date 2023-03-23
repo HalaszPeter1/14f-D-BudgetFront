@@ -28,9 +28,11 @@
         </button>
       </form>
     </div>
+    <link rel="stylesheet" type="text/css" href="../assets/loginRegister.css" />
   </template>
   
   <script setup>
+
   </script>
   
   <style>
@@ -96,5 +98,4 @@
     color: #0d6efd;
     cursor: pointer
 }
-
 </style>
