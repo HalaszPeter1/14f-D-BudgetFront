@@ -1,30 +1,20 @@
 <template>
     <div class="container">
-        <form>
-            <h2 class="mb-3">Register</h2>
-            <div class="input">
-                <label for="username">Username</label>
-                <input class="form-control" type="text" name="username" placeholder="username" />
-            </div>
-            <div class="input">
-                <label for="email">Email address</label>
-                <input class="form-control" type="text" name="email" placeholder="email@adress.com" />
-            </div>
-            <div class="input">
-                <label for="password">Password</label>
-                <input class="form-control" type="password" name="password" placeholder="password123" />
-            </div>
-
-            <div class="alternative-option mt-4">
-                Already have an account? <router-link to="/login">Login</router-link>
-            </div>
-
-            <button type="submit" id="register_button" class="mt-4 btn-pers">
-                Register
-            </button>
-        </form>
+        <RegisterForm :userData="userData"></RegisterForm>
     </div>
 </template>
+<script setup>
+import {ref} from 'vue';
+import RegisterForm from '../components/RegisterComponent.vue';
+
+const userData=ref({
+    id:null,
+    userName:'',
+    email:'',
+    password:''
+})
+
+</script>
 
 <style>
 
@@ -90,8 +80,4 @@
     cursor: pointer
 }
 </style>
-  
-<script>
-
-</script>
   
