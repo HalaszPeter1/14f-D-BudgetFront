@@ -1,18 +1,63 @@
 <template>
     <div class="container">
-        <RegisterForm :userData="userData"></RegisterForm>
+        <form @submit.prevent="submit">
+            <h2 class="mb-3">Register</h2>
+            <div class="input">
+                <label for="username">Username</label>
+                <input class="form-control" type="text" name="username" placeholder="username"
+                    v-model="userData.username" />
+            </div>
+            <div class="input">
+                <label for="email">Email address</label>
+                <input class="form-control" type="text" name="email" placeholder="email@adress.com"
+                    v-model="userData.email" />
+            </div>
+            <div class="input">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" name="password" placeholder="password123"
+                    v-model="userData.password" />
+            </div>
+
+            <div class="alternative-option mt-4">
+                Already have an account? <router-link to="/login">Login</router-link>
+            </div>
+
+            <button type="submit" id="register_button" class="mt-4 btn-pers" @click="saveRegisteredUser">
+                Register
+            </button>
+        </form>
     </div>
 </template>
 <script setup>
 import {ref} from 'vue';
-import RegisterForm from '../components/RegisterComponent.vue';
-
-const userData=ref({
-    id:null,
-    userName:'',
-    email:'',
-    password:''
+import { useUserStore } from '../stores/users'
+import { useRouter } from 'vue-router';;
+const { registerUser } = useUserStore();
+const router = useRouter();
+const userData = ref({
+    username: '',
+    email: '',
+    password: ''
 })
+
+function saveRegisteredUser() {
+    console.log(userData.value);
+    console.log(userData.value.username.length);
+    console.log(userData.value.password.length);
+    if (userData.value.username.length < 4 || userData.value.username.length > 15) {
+        alert("Username has to be min 4 character, max 15 character")
+    }
+    else if(userData.value.password.length < 8 || userData.value.username.length > 20){
+        alert("Password has to be min 8 character, max 20 character")
+    }
+    else{
+        registerUser(userData.value)
+        .then(() => {
+            router.push('/');
+        })
+    }
+
+}
 
 </script>
 

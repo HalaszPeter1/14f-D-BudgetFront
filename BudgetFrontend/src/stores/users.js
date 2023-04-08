@@ -21,8 +21,18 @@ export const useUserStore = defineStore({
         registerUser(userData){
             return Axios.post('/register',userData)
                 .then(()=>{return;})
-                .catch()
+                .catch(error=>{
+                    console.log(error);
+                })
         },
+        loginUser(userData){
+            return Axios.post('/login',userData)
+                .then(()=>{return;})
+                .catch(error=>{
+                    console.log(error);
+                })
+        },
+
 
     }
 });
