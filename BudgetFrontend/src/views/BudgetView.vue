@@ -1,5 +1,6 @@
 <template>
-    <div class="card mb-4">
+  <div class="row">
+    <div class="col-lg-6 card">
       <div class="card-header pb-0">
         <h3>Expenses</h3>
       </div>
@@ -116,10 +117,13 @@
               </tr>
             </tbody>
           </table>
+          <button id="AddButton" class="btn btn-primary d-md-flex mx-auto">Add new</button>
         </div>
       </div>
     </div>
-    <div class="card mb-4">
+
+
+    <div class="col-lg-6 card">
         <div class="card-header pb-0">
           <h3>Income</h3>
         </div>
@@ -236,11 +240,18 @@
                 </tr>
               </tbody>
             </table>
+            <button id="AddButton" class="btn btn-primary d-md-flex mx-auto">Add new</button>
           </div>
         </div>
       </div>
-  </template>
+  </div>
+</template>
   
-  <script>
+<script>
 
-  </script>
+</script>
+<style>
+  #AddButton{
+    margin-top: 7px;
+  }
+</style>
