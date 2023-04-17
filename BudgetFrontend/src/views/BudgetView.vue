@@ -32,7 +32,6 @@
                 <td>
                   <div class="d-flex px-2 py-1">
                     <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Clothing purchase</h6>
                       <p class="text-xs text-secondary mb-0">
                         250$
                       </p>
@@ -61,7 +60,6 @@
                 <td>
                   <div class="d-flex px-2 py-1">
                     <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">New exhaust filter</h6>
                       <p class="text-xs text-secondary mb-0">
                         60$
                       </p>
@@ -88,7 +86,6 @@
                     <td>
                       <div class="d-flex px-2 py-1">
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">June montly bills </h6>
                           <p class="text-xs text-secondary mb-0">
                             512.23$
                           </p>
@@ -155,7 +152,6 @@
                       <td>
                           <div class="d-flex px-2 py-1">
                               <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">Payment for June </h6>
                                   <p class="text-xs text-secondary mb-0">
                                       2320.03$
                                   </p>
@@ -184,7 +180,6 @@
                       <td>
                           <div class="d-flex px-2 py-1">
                               <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">Payment for May</h6>
                                   <p class="text-xs text-secondary mb-0">
                                       2320.03$
                                     </p>
@@ -213,7 +208,6 @@
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Payment for April</h6>
                         <p class="text-xs text-secondary mb-0">
                           2320.03$
                         </p>
