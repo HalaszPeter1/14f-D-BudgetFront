@@ -28,88 +28,31 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr v-for="expense in expenses">
                 <td>
                   <div class="d-flex px-2 py-1">
                     <div class="d-flex flex-column justify-content-center">
-                      <p class="text-xs text-secondary mb-0">
-                        250$
-                      </p>
+                      <p>{{ expense.amount }}</p>
                     </div>
                   </div>
                 </td>
                 <td>
-                  <p class="text-xs font-weight-bold mb-0">Shopping</p>
+                  <p class="text-xs font-weight-bold mb-0">{{ expense.type }}</p>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold"
-                    >23/06/18</span
-                  >
+                  <p>{{ expense.date }}</p>
                 </td>
                 <td class="align-middle">
                   <a
                     href="javascript:;"
                     class="text-secondary font-weight-bold text-xs"
-                    data-toggle="tooltip"
-                    data-original-title="Edit user"
                     >Edit</a
                   >
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div class="d-flex flex-column justify-content-center">
-                      <p class="text-xs text-secondary mb-0">
-                        60$
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">Car repairs</p>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold"
-                    >11/06/18</span
-                  >
-                </td>
-                <td class="align-middle">
                   <a
                     href="javascript:;"
                     class="text-secondary font-weight-bold text-xs"
-                    data-toggle="tooltip"
-                    data-original-title="Edit user"
-                    >Edit</a
+                    >Delete</a
                   >
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                          <p class="text-xs text-secondary mb-0">
-                            512.23$
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Bills</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold"
-                        >08/06/18</span
-                      >
-                    </td>
-                    <td class="align-middle">
-                      <a
-                        href="javascript:;"
-                        class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                        >Edit</a
-                      >
-                    </td>
-                  </tr>
                 </td>
               </tr>
             </tbody>
@@ -148,90 +91,33 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td>
-                          <div class="d-flex px-2 py-1">
-                              <div class="d-flex flex-column justify-content-center">
-                                  <p class="text-xs text-secondary mb-0">
-                                      2320.03$
-                                  </p>
-                              </div>
-                          </div>
-                      </td>
-                      <td>
-                          <p class="text-xs font-weight-bold mb-0">Monthly Payment</p>
-                      </td>
-                      <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold"
-                          >02/06/18</span
-                          >
-                      </td>
-                    <td class="align-middle">
-                        <a
-                        href="javascript:;"
-                        class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                        >Edit</a
-                        >
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <div class="d-flex px-2 py-1">
-                              <div class="d-flex flex-column justify-content-center">
-                                  <p class="text-xs text-secondary mb-0">
-                                      2320.03$
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="text-xs font-weight-bold mb-0">Monthly Payment</p>
-                        </td>
-                        <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold"
-                      >02/05/18</span
-                      >
-                    </td>
-                    <td class="align-middle">
-                        <a
-                        href="javascript:;"
-                        class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                        >Edit</a
-                        >
-                    </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                      <div class="d-flex flex-column justify-content-center">
-                        <p class="text-xs text-secondary mb-0">
-                          2320.03$
-                        </p>
-                      </div>
+                <tr v-for="income in incomes">
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <p>{{ income.amount }}</p>
                     </div>
-                  </td>
-                  <td>
-                    <p class="text-xs font-weight-bold mb-0">Monthly Payment</p>
-                  </td>
-                  <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold"
-                      >02/04/18</span
-                    >
-                  </td>
-                  <td class="align-middle">
-                    <a
-                      href="javascript:;"
-                      class="text-secondary font-weight-bold text-xs"
-                      data-toggle="tooltip"
-                      data-original-title="Edit user"
-                      >Edit</a
-                    >
-                  </td>
-                </tr>
+                  </div>
+                </td>
+                <td>
+                  <p class="text-xs font-weight-bold mb-0">{{ income.type }}</p>
+                </td>
+                <td class="align-middle text-center">
+                  <p>{{ income.date }}</p>
+                </td>
+                <td class="align-middle">
+                  <a
+                    href="javascript:;"
+                    class="text-secondary font-weight-bold text-xs"
+                    >Edit</a
+                  >
+                  <a
+                    href="javascript:;"
+                    class="text-secondary font-weight-bold text-xs"
+                    >Delete</a
+                  >
+                </td>
+              </tr>
               </tbody>
             </table>
             <button id="AddButton" class="btn btn-primary d-md-flex mx-auto">Add new</button>
@@ -244,8 +130,12 @@
 <script>
 
 </script>
-<style>
+
+<style scoped>
   #AddButton{
     margin-top: 7px;
+  }
+  .row{
+    margin:0px;
   }
 </style>
