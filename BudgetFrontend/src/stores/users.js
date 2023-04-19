@@ -5,6 +5,9 @@ export const useUserStore = defineStore({
     id: 'UserStore',
     state: () => ({
         users: [],
+        user: 0,
+        userId: 0,
+        isLoggedin: false
     }),
     getters: {
         // lekérdezni a state-ba lévő változókat
@@ -27,7 +30,11 @@ export const useUserStore = defineStore({
         },
         loginUser(userData){
             return Axios.post('/login',userData)
-                .then(()=>{return;})
+                .then((resp)=>{
+                    this.user=resp.data
+                    this.userId = this.user.user.id
+                    this.isLoggedin = true
+                })
                 .catch(error=>{
                     console.log(error);
                 })

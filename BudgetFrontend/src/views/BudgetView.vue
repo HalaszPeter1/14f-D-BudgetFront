@@ -48,11 +48,11 @@
                     class="text-secondary font-weight-bold text-xs"
                     >Edit</a
                   >
-                  <a
+                  <!-- <a
                     href="javascript:;"
                     class="text-secondary font-weight-bold text-xs"
                     >Delete</a
-                  >
+                  > -->
                 </td>
               </tr>
             </tbody>
@@ -111,24 +111,48 @@
                     class="text-secondary font-weight-bold text-xs"
                     >Edit</a
                   >
-                  <a
+                  <!-- <a
                     href="javascript:;"
                     class="text-secondary font-weight-bold text-xs"
                     >Delete</a
-                  >
+                  > -->
                 </td>
               </tr>
               </tbody>
             </table>
-            <button id="AddButton" class="btn btn-primary d-md-flex mx-auto">Add new</button>
+            <button id="AddButton" class="btn btn-primary d-md-flex mx-auto" @click="asd()">Add new</button>
           </div>
         </div>
       </div>
   </div>
 </template>
   
-<script>
-
+<script setup>
+import { ref } from 'vue'
+import budgetData from '../services/budget'
+import { useUserStore } from '../stores/users'
+let expenses = ref([])
+let incomes = ref([])
+const user = useUserStore();
+function asd() {
+  console.log(user.userId)
+}
+budgetData.getExpensesByUserId(user.userId)
+    .then(resp => {
+      expenses.value=resp.data
+      console.log(expenses.value)
+    })
+    .catch(err => {
+        console.log(err);
+    })
+budgetData.getIncomesByUserId(user.userId)
+    .then(resp => {
+      incomes.value=resp.data
+      console.log(incomes.value)
+    })
+    .catch(err => {
+        console.log(err);
+    })
 </script>
 
 <style scoped>
