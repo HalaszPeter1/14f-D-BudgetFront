@@ -4,9 +4,10 @@ import AboutView from '../views/AboutView.vue';
 import BudgetView from '../views/BudgetView.vue';
 import ExchangeView from '../views/ExchangeView.vue';
 import NewsView from '../views/NewsView.vue';
-import ProfilView from '../views/ProfilView.vue';
+import ProfileView from '../views/ProfileView.vue';
 import LoginView from '../views/LoginView.vue';
 import RegisterView from '../views/RegisterView.vue';
+import PasswordChangeView from '../views/PasswordChangeView.vue';
 
 
 const router = createRouter({
@@ -38,9 +39,9 @@ const router = createRouter({
       component: NewsView
     },
     {
-      path: '/profil',
-      name: 'profil',
-      component: ProfilView
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView
     },
     {
       path: '/login',
@@ -51,6 +52,11 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: RegisterView
+    },
+    {
+      path: '/UserSettings',
+      name: 'PasswordChangeView',
+      component: PasswordChangeView
     },
   ]
 })

@@ -3,8 +3,8 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <header >
-    <nav class="navbar navbar-expand-lg"   >
+  <header>
+    <nav class="navbar navbar-expand-lg "   >
       <div class="container-fluid" >
         <router-link class="nav-link" to="/"><img src="./assets/budgetPNG.png" alt="" /></router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -45,7 +45,7 @@ import { RouterLink, RouterView } from "vue-router";
               </a>
               <a href="#" class="sub-menu-link">
                 <img src="./assets/settings.png" alt="" />
-                <p class="sub-menu-text">Settings</p>
+                <router-link class="sub-menu-link-item" to="/profile">Settings</router-link>
               </a>
               <a href="#" class="sub-menu-link">
                 <img src="./assets/logout.png" alt="" />
