@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const instance = Axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: 'https://14f-dbudgetcalc.cyclic.app/',
     headers:{
         'Content-Type' : 'application/json'
     },
