@@ -1,11 +1,24 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+import { ref } from "vue";
+import { useUserStore } from './stores/users'
+const { logoutUser,isLoggedIn } = useUserStore();
+let userStore = useUserStore()
+userStore.isLoggedIn = Boolean(localStorage.getItem("isLoggedIn"))
+
+function logout() {
+  logoutUser()
+    .then(() => {
+      console.log(userStore.isLoggedIn)
+    })
+}
+
 </script>
 
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg "   >
-      <div class="container-fluid" >
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container-fluid">
         <router-link class="nav-link" to="/"><img src="./assets/budgetPNG.png" alt="" /></router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +32,7 @@ import { RouterLink, RouterView } from "vue-router";
             <li class="nav-item">
               <RouterLink class="nav-link" to="/news">News</RouterLink>
             </li>
-            <li class="nav-item">
+            <li v-if="userStore.isLoggedIn" class="nav-item">
               <RouterLink class="nav-link" to="/budget">Budget</RouterLink>
             </li>
             <li class="nav-item">
@@ -32,14 +45,14 @@ import { RouterLink, RouterView } from "vue-router";
           <div class="dropdown">
             <button class="dropdown-toggle btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img class="user-info-img" src="./assets/ProfileIcon.png" alt="" />
-              
+
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end p-2">
-              <a href="#" class="sub-menu-link">
+              <a v-if="!userStore.isLoggedIn" href="#" class="sub-menu-link">
                 <img src="./assets/ProfileIcon.png" alt="" />
                 <router-link class="sub-menu-link-item" to="/register">Sign up</router-link>
               </a>
-              <a href="#" class="sub-menu-link">
+              <a v-if="!userStore.isLoggedIn" href="#" class="sub-menu-link">
                 <img src="./assets/ProfileIcon.png" alt="" />
                 <router-link class="sub-menu-link-item" to="/login">Login</router-link>
               </a>
@@ -49,7 +62,7 @@ import { RouterLink, RouterView } from "vue-router";
               </a>
               <a href="#" class="sub-menu-link">
                 <img src="./assets/logout.png" alt="" />
-                <p class="sub-menu-text">Logout</p>
+                <p class="sub-menu-text"  @click="logout()">Logout</p>
               </a>
             </ul>
           </div>
@@ -62,16 +75,18 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style scoped>
-.nav-link{
+.nav-link {
   color: white;
 }
 
-header{
+header {
   background-color: rgb(25, 63, 233);
 }
+
 .sub-menu-text {
   margin-top: 12px;
 }
+
 .user-info-img {
   width: 45px;
   border-radius: 50%;
@@ -85,7 +100,8 @@ header{
   color: #525525;
   margin: 15px 0;
 }
-.sub-menu-link-item  {
+
+.sub-menu-link-item {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -103,12 +119,11 @@ header{
 }
 
 
-.sub-menu-link-item:hover  {
+.sub-menu-link-item:hover {
   font-weight: 600;
 }
 
 .sub-menu-link:hover p {
   font-weight: 600;
 }
-
 </style>

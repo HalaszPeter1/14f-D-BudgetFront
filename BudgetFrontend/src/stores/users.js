@@ -1,16 +1,14 @@
 import { defineStore } from 'pinia';
 import Axios from '../services/dataservice.js'
-
 export const useUserStore = defineStore({
     id: 'UserStore',
     state: () => ({
         users: [],
         user: 0,
         userId: 0,
-        isLoggedin: false
+        isLoggedIn:false
     }),
     getters: {
-        // lekérdezni a state-ba lévő változókat
     },
     actions: {
         getAllUsers() {
@@ -33,11 +31,24 @@ export const useUserStore = defineStore({
                 .then((resp)=>{
                     this.user=resp.data
                     this.userId = this.user.user.id
-                    this.isLoggedin = true
+                    this.isLoggedIn=true
+                    console.log(this.userId)
+                    localStorage.setItem('userId',this.userId)
+                    localStorage.setItem('isLoggedIn',this.isLoggedIn)
+                    
                 })
                 .catch(error=>{
                     console.log(error);
                 })
+        },
+        logoutUser() {
+            return Axios.post('/logout')
+                .then(resp=>{
+                    console.log(resp.data)
+                    this.isLoggedIn=false
+                    localStorage.setItem('isLoggedIn',this.isLoggedIn)
+                })
+                .catch()
         },
 
 
