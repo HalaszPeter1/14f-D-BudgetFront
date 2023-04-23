@@ -31,7 +31,9 @@
                   </div>
                 </td>
                 <td>
-                  <p class="text-xs font-weight-bold mb-0">{{ expense.type }}</p>
+                  <table v-for="tag in tags">
+                    <tr class="text-xs font-weight-bold mb-0">{{ tag[0].name }}</tr>
+                  </table>
                 </td>
                 <td class="align-middle text-center">
                   <p>{{ expense.date }}</p>
@@ -47,11 +49,13 @@
               </tr>
             </tbody>
           </table>
-          <button id="AddButton" class="btn btn-primary d-md-flex mx-auto">Add new</button>
+          <button data-bs-toggle="modal" data-bs-target="#expenseModal" data-bs-whatever="@mdo"
+            class="btn btn-primary d-md-flex mx-auto">Add new</button>
         </div>
       </div>
     </div>
-
+<!-- Expenses Modal -->
+    <ExpenseModal></ExpenseModal>
 
     <div class="col-lg-6 card">
       <div class="card-header pb-0">
@@ -100,43 +104,89 @@
               </tr>
             </tbody>
           </table>
-          <button id="AddButton" class="btn btn-primary d-md-flex mx-auto" @click="asd()">Add new</button>
+          <button data-bs-toggle="modal" data-bs-target="#incomeModal" data-bs-whatever="@fat"
+            class="btn btn-primary d-md-flex mx-auto">Add new</button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Income Modal -->
+  <IncomeModal></IncomeModal>
 </template>
   
 <script setup>
 import { ref } from 'vue'
 import budgetData from '../services/budget'
 import { useUserStore } from '../stores/users'
+import ExpenseModal from '../components/ExpenseModal.vue'
+import IncomeModal from '../components/IncomeModal.vue'
 let expenses = ref([])
+let expensesType = ref([])
 let incomes = ref([])
 let userId = ref()
+let tags = ref([])
+let expenseId = ref([])
+let NewExpenseAmount = ref()
+let NewExpenseType = ref()
+let NewExpenseDate = ref()
 const user = useUserStore();
 function asd() {
   console.log(localStorage.getItem("userId"))
   console.log(Boolean(localStorage.getItem("isLoggedin")))
 }
 userId.value = localStorage.getItem("userId")
+
 budgetData.getExpensesByUserId(userId.value)
   .then(resp => {
     expenses.value = resp.data
-    console.log(expenses.value)
+    expenses.value.forEach(element => {
+      budgetData.getByExpenseId(element.id)
+      .then(resp => {
+          expensesType.value = resp.data
+          getTags()
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    });
+    //console.log(expenses.value)
   })
   .catch(err => {
     console.log(err);
   })
-budgetData.getIncomesByUserId(user.userId)
+
+
+budgetData.getIncomesByUserId(userId.value)
   .then(resp => {
     incomes.value = resp.data
-    console.log(incomes.value)
+    //console.log(incomes.value)
   })
   .catch(err => {
     console.log(err);
   })
+
+// budgetData.createExpenses()
+//   .then(resp => {
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   })
+
+function getTags() {
+  expensesType.value.forEach(element => {
+    budgetData.getTagById(element.tagId)
+      .then(resp => {
+        tags.value.push(resp.data)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  });
+}
+console.log(tags.value)
 </script>
+
 
 <style scoped>
 #AddButton {

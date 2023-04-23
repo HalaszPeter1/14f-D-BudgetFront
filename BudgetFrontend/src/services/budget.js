@@ -25,4 +25,10 @@ export default {
     deleteIncomes(userId){
         return Axios.delete(`/incomes//delete/${userId}`)
     },
+    getByExpenseId(expenseId){
+        return Axios.get(`/tagsExpenses/expense/${expenseId}`)
+    },
+    getTagById(id){
+        return Axios.get(`/tags/${id}`)
+    },
 }
